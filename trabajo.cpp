@@ -1,59 +1,80 @@
-#include <iostream>
-#include <string>
+    #include <windows.h>
+    #include <iostream>
+    using namespace std;
 
-int main() {
+    void gotoxy(int x, int y) {
+        COORD coord;
+        coord.X = x;
+        coord.Y = y;
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+    }
+    
+    string nombres, apellidos, cargo;
+    float costoHora, horaLaborada, sueldoInicial, renta, isss, seguro, sueldoPagar;
 
-   std::string nombre, apellido, cargo;
-   float costoHora, horasTrabajadas;
-   
-   // Tasas y valores fijos
-   
-   const float TASA_RENTA = 0.073f;
-   const float TASA_ISSS  = 0.054f;
-   const float SEGURO_VIDA_FIJO = 12.0f;
+    int main() {
+    	std::cout << "********************************************************************************* \n";
+    	std::cout << "|			CALCULO DE SUELDO FINAL DE EMPLEADO			|\n";
+    	std::cout << "|*******************************************************************************|\n";
+    	std::cout << "|										|\n";
+    	std::cout << "|	Ingrese la siguiente informacion laboral: 				|\n";
+    	std::cout << "|										|\n";
+    	std::cout << "|										|\n";
+    	std::cout << "| 1. Nombres: ______________________________ 4. Costo hora: $___________ 	|\n";
+    	std::cout << "|										|\n";
+    	std::cout << "| 2. Apellidos: ____________________________ 5. Horas laboradas: ______ horas	|\n";
+    	std::cout << "|										|\n";
+    	std::cout << "| 3. Cargo: _____________________						|\n";
+    	std::cout << "|										|\n";
+    	std::cout << "|_______________________________________________________________________________|";
+    	
+    	gotoxy(14, 7); // Moviendo cursor a despues de nombre. (fila, columna)
+    	std::getline(std::cin, nombres); // Definiendo y Guardando input de nombre con espacio
+    	
+    	gotoxy(16, 9);
+    	std::getline(std::cin, apellidos);
 
-   
-   float sueldoBruto, montoIsss, montoRenta, montoSeguro, sueldoNeto;
+		gotoxy(12, 11);
+    	std::getline(std::cin, cargo);
 
-   std::cout <<"Por favor, ingrese su nombre: ";
-   std::getline(std::cin, nombre);
-   std::cout <<"Por favor, ingrese su apellido: ";
-   std::getline(std::cin, apellido);
-   std::cout <<"Por favor, ingrese su cargo: ";
-   std::getline(std::cin, cargo);
-   std::cout <<"Por favor, ingrese su sueldo por hora: ";
-   std::cin >> costoHora;
-   std::cout <<"Por favor, ingrese las horas trabajadas: ";
-   std::cin >> horasTrabajadas;
+		gotoxy(61, 7);
+		std::cin >> costoHora;
 
-   // calculando sueldo
-   sueldoBruto = costoHora * horasTrabajadas;
+		gotoxy(65, 9);
+		std::cin >> horaLaborada;
 
-   montoIsss   = sueldoBruto * TASA_ISSS;
-   montoRenta  = sueldoBruto * TASA_RENTA;
-   montoSeguro = SEGURO_VIDA_FIJO;
+    	gotoxy(0, 15);
+    	std::cout << "Nombres " << nombres << " " << apellidos << " cargo " << cargo << "\n";
 
-   float deducciones = montoIsss + montoRenta + montoSeguro;
-   sueldoNeto = sueldoBruto - deducciones;
 
-   // Boleta de pago
+		// Calculando sueldo
 
-   std::cout << "\n\n";
-   std::cout << "----------------------------------\n";
-   std::cout << "         Recibo de Pago           \n";
-   std::cout << "----------------------------------\n";
-   std::cout << "Nombre: " << nombre << " " << apellido << "\n";
-   std::cout << "Cargo: " << cargo << "\n";
-   std::cout << "Horas Trabajadas: " << horasTrabajadas << "\n";
-   std::cout << "Costo por Hora: $" << costoHora << "\n";
-   std::cout << "Sueldo Bruto: $" << sueldoBruto << "\n";
-   std::cout << "Deducciones: \n";
-   std::cout << "  ISSS: $" << montoIsss << "\n";
-   std::cout << "  Renta: $" << montoRenta << "\n";
-   std::cout << "  Seguro de Vida: $" << montoSeguro << "\n";
-   std::cout << "Sueldo Neto: $" << sueldoNeto << "\n";
-   std::cout << "----------------------------------\n";
-   std::cout << "Gracias por su trabajo!\n";
+		sueldoInicial = costoHora * horaLaborada;
+		renta = sueldoInicial * 0.075;
+		isss = sueldoInicial * 0.054;
+		seguro = 12.00;
+		sueldoPagar = sueldoInicial - (renta + isss + seguro);
 
-   return 0;
-}
+		// Salida de datos
+		std::cout << "********************************************************************************* \n";
+		std::cout << "		Empleado: " << nombres << " " << apellidos << "\n";
+		std::cout << "		Cargo: " << cargo << "\n";
+		std::cout << "********************************************************************************* \n";
+		std::cout << "| 	Sueldo Inicial 	: $" << sueldoInicial << "						|\n";
+		std::cout << "| 	Renta (7.5%)	: $" << renta << "						|\n";
+		std::cout << "| 	ISSS (5.4%)	: $" << isss << "						|\n";
+		std::cout << "| 	Seguro Fijo	: $" << seguro << "						|\n";
+		std::cout << "|_______________________________________________________________			|\n";
+		std::cout << "| 	Sueldo a Pagar	: $" << sueldoPagar << "						|\n";
+		std::cout << "|_______________________________________________________________			|\n";
+		std::cout << "********************************************************************************* \n";
+
+
+		
+
+
+
+
+
+        return 0;
+    }
