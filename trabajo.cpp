@@ -43,10 +43,9 @@
 		gotoxy(65, 9);
 		std::cin >> horaLaborada;
 
-    	gotoxy(0, 15);
-    	std::cout << "Nombres " << nombres << " " << apellidos << " cargo " << cargo << "\n";
 
-
+		// Limpieza de pantalla
+		system("cls");
 		// Calculando sueldo
 
 		sueldoInicial = costoHora * horaLaborada;
