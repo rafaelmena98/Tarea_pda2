@@ -1,5 +1,6 @@
     #include <windows.h>
     #include <iostream>
+	#include <iomanip>
     using namespace std;
 
     void gotoxy(int x, int y) {
@@ -47,7 +48,7 @@
 		// Limpieza de pantalla
 
 		system("cls");
-		
+
 		// Calculando sueldo
 
 		sueldoInicial = costoHora * horaLaborada;
@@ -64,11 +65,13 @@
 		std::cout << "| 	Sueldo Inicial 	: $" << sueldoInicial << "						|\n";
 		std::cout << "| 	Renta (7.5%)	: $" << renta << "						|\n";
 		std::cout << "| 	ISSS (5.4%)	: $" << isss << "						|\n";
-		std::cout << "| 	Seguro Fijo	: $" << seguro << "						|\n";
-		std::cout << "|_______________________________________________________________			|\n";
+		std::cout << "| 	Seguro Fijo	: $" << seguro << "							|\n";
+		std::cout << "|_______________________________________________________________________________|\n";
 		std::cout << "| 	Sueldo a Pagar	: $" << sueldoPagar << "						|\n";
-		std::cout << "|_______________________________________________________________			|\n";
+		std::cout << "|_______________________________________________________________________________|\n";
 		std::cout << "********************************************************************************* \n";
 
+
+		system("pause");
         return 0;
     }
