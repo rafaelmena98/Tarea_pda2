@@ -45,7 +45,9 @@
 
 
 		// Limpieza de pantalla
+
 		system("cls");
+		
 		// Calculando sueldo
 
 		sueldoInicial = costoHora * horaLaborada;
@@ -67,13 +69,6 @@
 		std::cout << "| 	Sueldo a Pagar	: $" << sueldoPagar << "						|\n";
 		std::cout << "|_______________________________________________________________			|\n";
 		std::cout << "********************************************************************************* \n";
-
-
-		
-
-
-
-
 
         return 0;
     }
